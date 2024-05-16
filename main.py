@@ -42,7 +42,7 @@ async def main() -> None:
     dp.include_router(other_router)
 
     # Здесь будем регистрировать миддлвари
-    # ...
+    dp.update.outer_middleware(FirstOuterMiddleware())
 
     # Запускаем polling
     await dp.start_polling(bot)
