@@ -28,6 +28,7 @@ class FirstInnerMiddleware(BaseMiddleware):
 
         return result
 
+
 class SecondInnerMiddleware(BaseMiddleware):
 
     async def __call__(

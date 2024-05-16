@@ -22,9 +22,11 @@ class FirstOuterMiddleware(BaseMiddleware):
             event.__class__.__name__
         )
 
-        # Вместо `result = await handler(event, data)` пишем `return` и, соответственно,
-        # код после return выполняться тоже не будет
-        return
+        result = await handler(event, data)
+
+        logger.debug('Выходим из миддлвари  %s', __class__.__name__)
+
+        return result
 
 
 class SecondOuterMiddleware(BaseMiddleware):
@@ -64,4 +66,8 @@ class ThirdOuterMiddleware(BaseMiddleware):
             event.__class__.__name__
         )
 
+        result = await handler(event, data)
+
         logger.debug('Выходим из миддлвари  %s', __class__.__name__)
+
+        return result
